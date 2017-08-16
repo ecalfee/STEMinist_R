@@ -301,4 +301,79 @@ library("MASS")
 
        #### EXERCISE 1.4 ####
 
+################################
+##### 1.5 CLEANING UP DATA #####
+################################
+
+# useful commands: duplicated(), is.na(), na.omit(), complete.cases(), duplicated(), !duplicated()
+
+
+### NAs and missing values
+## NA is another special value, like TRUE or FALSE
+## it is the placeholder for missing data in R
+# check whether a value is NA
+ # is.na()
+
+
+ # add 1 to NA
+
+
+# we need to treat "NA" differently than other values
+# R recognizes this as a numeric, but it is missing data
+# this is a a logical -- indicating missing data
+ # index of values that are NA
+
+
+ # index of values that are not NA
+
+
+ # show values that are not NA
+
+
+## One way to clean up data is to remove incomplete rows (those with NAs) from a data.frame
+test = data.frame(
+  x = c("a", "b", "c", "d", "d"),
+  y = c(1, 2, 3, 4, NA))
+
+ # check what this new data frame looks like
+
+
+ # na.omit()
+
+
+ # na.exclude() does about the same thing
+
+
+# Sometimes, we want to know which rows are complete (have no NA values)? 
+# complete.cases() - looks along each row, and each column, for NA values
+
+
+ # Subset the data frame using complete.cases()
+
+
+## We also might have messy data where rows were recorded multiple times
+##  We might want to get rid of these duplicate entries
+test2 = data.frame(
+  x = c("a", "b", "c", "d", "d"),
+  y = c(1, 2, 3, 4, 4))
+
+
+ # duplicated()
+
+
+ # isolate duplicated rows
+
+
+ # index non-duplicated rows
+
+
+ # remove duplicated rows
+
+
+## Sometimes, we want to set NA values to zero
+ # is.na() and subsetting
+
+
+       ##### Exercise 1.5 #####
+
 
