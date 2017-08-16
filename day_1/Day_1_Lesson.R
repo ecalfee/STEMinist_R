@@ -217,6 +217,12 @@ library("MASS")
  # What class is a logical value?
 
 
+ # Logical values are stored as 0 for FALSE and 1 for TRUE
+ #  so you can do math with them
+  # sum()
+
+
+## logicals will be the output of various tests
  # equals
 
 
@@ -238,6 +244,9 @@ library("MASS")
 
 ### Testing for conditions can be extended to vectors and columns of data frames
  # Which numbers in 1:10 are greater than 3?
+
+
+ # How many numbers in 1:10 are greater than 3?
 
 
  # Which cereals have over 100 calories?
