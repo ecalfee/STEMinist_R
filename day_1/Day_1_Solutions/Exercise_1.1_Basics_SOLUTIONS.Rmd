@@ -1,0 +1,84 @@
+---
+title: "Exercise 1.1"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### Interacting with R 
+#### useful functions: `c()`, `ls()`, `rm()`, `objects()`
+
+
+##### * 01. Open Rstudio and perform an arithmetic calculation in the command line.
+```{r question1}
+1 + 1
+2 * 8
+```
+
+##### * 02. Create a numeric vector in the command line containing:
+
+- the numbers 2, 9, 3, 8, and 3 and assign this vector to a global variable x. 
+
+```{r}
+x = c(2,9,3,8,3)
+x
+```
+
+
+- Perform arithmetic with x. 
+
+```{r}
+x + 2000
+```
+
+
+- Convince yourself R works as a calculator, and knows order of operations. 
+
+```{r}
+1 + 3 * 10^2
+```
+
+
+- Multiply x by 10, and save the result as a new object named y
+
+```{r}
+y = x * 10
+```
+
+        
+- Calculate the difference in the sum of the x vector and the sum of the y vector
+
+```{r}
+sum(x) - sum(y)
+```
+
+##### 03. Call the help files for the functions ls() and rm()
+```{r}
+?ls
+help(ls)
+```
+
+- What are the arguments for the ls() function?
+
+The arguments for the ls() function are: name, pos, envir, all.names, pattern, and sorted.
+
+- What does the 'sorted' argument do? 
+       
+The sorted argument takes a logical value, which denotes whether the vector should be sorted alphabetically or not. 
+By default, ls() uses sorted=TRUE.
+
+##### 04. List all objects in the global environment. 
+
+```{r}
+ls()
+```
+
+- Remove x and y from the global environment.
+```{r}
+rm(x)
+rm(y)
+```
+

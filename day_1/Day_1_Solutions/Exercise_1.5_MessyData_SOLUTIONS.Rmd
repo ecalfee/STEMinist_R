@@ -1,0 +1,115 @@
+---
+title: "Exercise 1.5"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require('knitr')
+opts_knit$set(root.dir = "~/Documents/STEMinist_R/day_1/Day_1_Exercises/")
+```
+### Data clean up 
+#### useful commands: `duplicated()`, `is.na()`, `complete.cases()`, `!duplicated()`
+
+##### load the sleep data as in exercise 1.4
+##### this data describes properties of sleep for different mammals
+##### column names are:
+- BodyWgt   body weight (kg)
+- BrainWgt  brain weight (g)
+- NonD      slow wave (non-dreaming) sleep (hours/day)
+- Dream     paradoxical (dreaming) sleep (hours/day)
+- Sleep     total sleep (hours/day)
+- Span      maximum life span (years)
+- Gest      gestation time (days)
+- Pred      Predation index (1-5) 1 = minimum (least likely to be preyed upon), 5 = max
+- Exp       sleep exposure index (1-5) 1 = least exposed (sleeps in well-protected den), 5 = most exposed
+- Danger    overall danger index (1-5) 1 = least danger (from other animals), 5 = most danger
+
+```{r}
+sleep = read.csv('sleep.csv')
+```
+
+
+#* 01. How many duplicated rows are in the dataset?
+
+```{r}
+sum(duplicated(sleep))
+```
+
+
+# 02. Remove the duplicated rows from the datset
+
+```{r}
+dim(sleep)
+sleep = sleep[!duplicated(sleep),]
+dim(sleep)  ## note that there are six fewer rows now
+```
+
+
+#* 03. Subset the dataset to only include records with data on Gestation period
+
+```{r}
+sleep[!is.na(sleep[,'Gest']),]  ## so we are only taking rows where Gest is not (!) NA
+```
+
+
+# 04. Subset the dataset to only include records with data on Dreaming and non dreaming sleep
+
+```{r}
+sleep[!is.na(sleep[,'Dream']) & !is.na(sleep[,'NonD']),]
+```
+
+
+#* 05. Subset the dataset to only include complete records
+
+```{r}
+sleep[complete.cases(sleep),]  ## remember that complete.cases() returns indexes of rows
+```
+
+# 06. How heavy is the heaviest mammal in the dataset?
+
+```{r}
+max(sleep[,'BodyWgt'])
+```
+
+
+#* 07. What is the brain weight of the heaviest individual?
+```{r}
+sleep[,'BrainWgt'][which.max(sleep[,'BodyWgt'])]
+```
+
+
+# 08. What are the weights of the animals that share the most common combination of Pred/Exp/Danger? 
+#      What is the mean weight of those animals? (This is hard. Don't worry if you don't get it.)
+
+```{r}
+table(sleep[,c('Pred', 'Exp', 'Danger')]) ## this will give us a three way table
+max(table(sleep[,c('Pred', 'Exp', 'Danger')]))  ## this will tell us which is the max
+## look in the table above to see this value of 10 is observed when Danger==1, Pred==1, and Exp==1
+sleep[,'BodyWgt'][sleep[,'Pred']==1 &   ## we can spread this command across lines when it gets unwieldy
+                    sleep[,'Danger']==1 &
+                    sleep[,'Exp']==1]
+
+mean(sleep[,'BodyWgt'][sleep[,'Pred']==1 &  
+                    sleep[,'Danger']==1 &
+                    sleep[,'Exp']==1]
+)
+```
+
+
+This data came from a paper by [Allison and Cicchetti, 1976, \textit{Science}](http://seek.ecoinformatics.org/attach%3Fpage=Ecoinformatics2003%252Fallison+and+cicchetti+article.pdf)
+
+For fun, these least preyed upon, least in danger, and least exposed when sleeping animals are:
+
+- Arctic fox
+- Big brown bat
+- Chimpanzee
+- Eastern American mole
+- Giant armadillo
+- Gray wolf
+- Jaguar
+- Little brown bat
+- Man
+- Red fox

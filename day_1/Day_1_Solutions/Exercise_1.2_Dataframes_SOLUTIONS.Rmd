@@ -1,0 +1,131 @@
+---
+title: "Exercise 1.2"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Characterize a data frame
+
+useful commends: `[row , col]`, `str()`, `dim()`, `nrow()`, `unique()`, `length()`, `rownames()`, `summary()`, `min()`, `max()`, `mean()`, `range()`, `levels()`, `factor()`, `as.factor()`, `class()`, `ncol()`, `nrow()`, `table()`, `sum()`, `quantile()`, `var()`
+
+## We'll use the built-in 'iris' dataset
+```{r}
+data(iris) # this loads the 'iris' dataset 
+```
+
+# load help file for the 'iris' dataset
+
+```{r}
+?iris
+help(iris)
+```
+
+# this calls the object iris
+```{r}
+head(iris) ## let's not print the entire thing to our screens
+```
+
+If you're not a botanist, remind yourself what an iris looks like http://suruchifialoke.com/img/ML/iris.png
+
+#* 01. How many rows are in the dataset?
+
+```{r}
+nrow(iris)
+```
+
+
+#  02. What are three distinct ways to figure this out? 
+```{r}
+nrow(iris)
+dim(iris)[1]
+length(rownames(iris))
+str(iris)
+```
+
+
+#* 03. How many species of flowers are in the dataset?
+
+```{r}
+length(unique(iris[,'Species'])) ## this counts how long the unique() vector is
+length(table(iris[,'Species'])) ## this asks how many entries are in the table
+```
+
+# 04. What class is iris?
+```{r}
+class(iris)
+```
+
+#* 05. How many columns does this data frame have? What are their names?
+
+```{r}
+ncol(iris)
+colnames(iris)
+```
+
+#* 06. What class did R assign to each column?
+
+```{r}
+class(iris[,1])
+class(iris[,2])
+class(iris[,3])
+class(iris[,4])
+class(iris[,5])
+```
+Or, we can use `lapply()`, which we'll learn about later
+```{r}
+## ssh, we're not supposed to learn this until Day 3
+lapply(iris, class)
+```
+
+
+# 07. Assign the first flower's petal's width and length to new objects called setosa1.petalwidth and setosa1.petallength
+
+```{r}
+setosa1.petalwidth = iris[1,'Petal.Width']
+setosa1.petallength = iris[1,'Petal.Length']
+```
+
+
+#* 08. Calculate the approximate area of the petal of the first flower, setosa1 (assume petal area can be approximated by a rectangle).
+
+```{r}
+setosa1.petalwidth * setosa1.petallength
+```
+
+
+# 09. Calculate the petal area of each flower in the iris dataset
+#        and assign this to a new column named PetalArea.
+
+```{r}
+iris[,'PetalArea'] = iris[,'Petal.Width'] * iris[,'Petal.Length']
+head(iris)
+```
+
+
+# 10. What is the maximum sepal length of the irises?
+
+```{r}
+max(iris[,'Sepal.Length'])
+```
+
+
+#* 11. What is the average sepal length among flowers in the datset?
+
+```{r}
+mean(iris[,'Sepal.Length'])
+```
+
+
+# 12. How about the minimum and median sepal length? 
+
+```{r}
+min(iris[,'Sepal.Length'])
+median(iris[,'Sepal.Length'])
+```
+
+

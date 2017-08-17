@@ -1,0 +1,68 @@
+---
+title: "Exercise 1.4"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+require('knitr')
+opts_knit$set(root.dir = "~/Documents/STEMinist_R/day_1/Day_1_Exercises/")
+```
+### Getting data into R
+#### useful commands `setwd()`, `read.csv()`, `list.files()`, `getwd()`
+
+##### * 01. Enter getwd() to determine your current working directory. 
+  
+```{r}
+getwd()
+```
+
+    
+# *02. Set working directory to the class folder you have from Google Drive 
+
+```{r, eval=FALSE, include=TRUE}
+## this depends on where you've saved things, and will be different for everybody!
+setwd('~/Documents/STEMinist_R/day_1/Day_1_Exercises/')  
+```
+
+
+#* 03. List the files present in this directory.
+
+```{r}
+list.files()
+```
+
+
+#* 04. Read "sleep.csv" into R, store as an object sleep
+
+```{r}
+sleep = read.csv('sleep.csv')
+```
+
+  
+# 05. How many columns are in sleep?
+
+```{r}
+ncol(sleep)
+```
+
+
+# 06. Remove sleep from your R working session
+
+```{r}
+rm(sleep)
+```
+
+  
+# 07. Move up one working directory to the parent folder,
+#       list objects present, and then move back down to the course folder.
+       
+    
+```{r, eval=FALSE, include=TRUE}
+setwd('..')  # in unix, .. means up one directory, . means the current directory
+list.files()
+## note that unless you've named your directories just like mine, this may be different!
+setwd('Day_1_Exercises')  
+```
