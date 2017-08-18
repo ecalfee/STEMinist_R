@@ -1,0 +1,129 @@
+---
+title: "Exercise 2.1"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+### Plotting
+#### useful commands: `hist()`, `barplot()`, `boxplot()`, `plot()` (for scatter plot)
+#### useful arguments within plot(): `main`, `xlab`, `ylab`, `col`, `pch`, `cex`
+
+
+##### 00*. load the "crabs" dataset in the MASS package
+
+```{r}
+library("MASS")
+data(crabs)
+```
+
+
+##### 00*. subset the data to only include the blue crabs
+```{r}
+blueCrabs = crabs[crabs[ ,"sp"] == "B", ]
+
+```
+
+
+##### 01*. plot carapace length versus carapace width of the blue crabs
+
+- 01a*. make a scatterplot using the 'plot' command
+```{r}
+plot(x = blueCrabs[ , "CW"], blueCrabs[ , "CL"])
+
+```
+
+- 01b*. change the color of the points
+```{r}
+plot(x = blueCrabs[ , "CW"], blueCrabs[ , "CL"], col = "red")
+
+```
+- 01c.change the shape of the points to a triangle
+```{r}
+plot(x = blueCrabs[ , "CW"], blueCrabs[ , "CL"], col = "red", pch = 2)
+
+```
+
+- 01d. change the size of the points
+```{r}
+plot(x = blueCrabs[ , "CW"], blueCrabs[ , "CL"], col = "red", pch = 2, cex = 2)
+```
+
+
+- 01e*. add a title and axis labels to the plot
+```{r}
+plot(x = blueCrabs[ , "CW"], blueCrabs[ , "CL"], col = "red", pch = 2, cex = 2, xlab = "Carapace width (mm)", ylab = "Carapace length (mm)", main = "Carapace length versus carapace width of blue crabs")
+
+```
+
+##### 02*. make a barplot of the number of observations for each sex of blue crabs
+```{r}
+barplot(table(blueCrabs[ , "sex"]))
+
+```
+
+##### 03*. make a histogram of the body depth of the blue crabs
+```{r}
+hist(blueCrabs[, "BD"])
+
+```
+
+##### 04*. boxplot of body depth by sex of the blue crabs
+```{r}
+boxplot(blueCrabs[ ,"BD"] ~ blueCrabs[ , "sex"])
+
+```
+
+- 04a* plot this in different colors for each sex
+```{r}
+boxplot(blueCrabs[ ,"BD"] ~ blueCrabs[ , "sex"], col = c("red", "blue"))
+
+```
+
+- 04b add a main title and axis labels
+```{r}
+boxplot(blueCrabs[ ,"BD"] ~ blueCrabs[ , "sex"], col = c("red", "blue"), main = "Blue crab body depth by sex", ylab = "Sex", xlab = "Body depth (mm)")
+
+```
+
+
+##### 05 BONUS** - defining color variables for plotting
+ useful commands: [logical,]= , `ifelse()`, `plot()` + `points()`
+
+make scatter plot for carapace length versus carapace width of the blue crabs
+
+but now depict records of female crabs with red, and male crabs with blue
+
+- Solution 1 --- add a column of colors to the original dataset using indexing
+```{r}
+blueCrabs$color = NA # add a new column to the data.frame, and assign "dummy" values for now
+blueCrabs$color[blueCrabs$sex == "F"] = "red" # now assign "red" to the new column when rats are femals
+blueCrabs$color[blueCrabs$se == "M"] = "blue" # now assign "blue" when they are males
+# depict females and males with different colors
+plot(blueCrabs$CL ~ blueCrabs$CW, col = blueCrabs$color)
+
+```
+
+
+- Solution 2 -- add a color column to the dataset using an "ifelse" statement
+```{r}
+blueCrabs$color2 = ifelse(blueCrabs$sex == "F", "red", "blue")
+# if crabs are females add "red", but if they are not females, add "blue" to the new column
+
+# plot mass across time, and depict females and males with different colors
+plot(blueCrabs$CL ~ blueCrabs$CW, col = blueCrabs$color2)
+
+```
+
+- Solution 3 --- make NULL plot and add points  (note: this can be a good strategy to combine with sapply for a large number of categories)
+```{r}
+plot(blueCrabs$CL ~ blueCrabs$CW, col = NULL)
+points(blueCrabs[blueCrabs$sex == "F", "CW"], blueCrabs[blueCrabs$sex == "F", "CL"], col = "red")
+points(blueCrabs[blueCrabs$sex == "M", "CW"], blueCrabs[blueCrabs$sex == "M", "CL"], col = "blue")
+
+```
+
+
