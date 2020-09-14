@@ -1,0 +1,141 @@
+---
+title: "Earthquake Challenge"
+output:
+  pdf_document: default
+---
+
+## Should you be worried about earthquakes? Let's make a map.
+#### useful functions (what I used to do this): dim(), distm(), install.packages(), library(), map(), mapply(), mapproject(), max(), min(), function(){}, points(), read.csv()
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+#### Let's make a map. Make a map in R. Use data from https://earthquake.usgs.gov/earthquakes/search/ to generate a map of earthquakes.
+#### Packages
+```{r}
+# installing all the packages I'll use
+# install.packages(c("maps","mapproj","geosphere")) # uncomment and run once
+library(maps)
+library(mapproj)
+library(geosphere)
+```
+#### Generate dataset
+- get data from https://earthquake.usgs.gov/earthquakes/search/
+- download a CSV from this site (you select the time period) I used the last 30 days
+
+#### Import earthquake data in R
+```{r}
+recentquakes <- read.csv("~/Downloads/query.csv", stringsAsFactors=F)
+# you'll need to put your own file here
+```
+
+#### Map all the recent earth quakes. 
+```{r}
+# get a map
+par(mar=c(0,0,0,0))
+map("world")
+
+# get points on the map
+ptsproj <- mapproject(recentquakes$longitude, recentquakes$latitude)
+points(ptsproj)
+```
+
+#### How big was the biggest earthquake?
+```{r}
+max(recentquakes$mag)
+```
+
+#### How far was your home from the biggest earthquake? 
+```{r}
+# where do you live?
+# my (approximate) address where I used to live
+mylat = 30.35
+mylong = -97.75
+
+# orders earthquakes biggest to smallest
+orderedquakes <- recentquakes[order(recentquakes$mag, decreasing = T), ]
+
+# biggest earthquake
+biggest <- orderedquakes[1, ]
+biggest
+
+# note: this can also be solved this way, 
+# but we still use [1, ] to take just 1 row in case there are ties
+# biggest quake:
+recentquakes[recentquakes$mag == max(recentquakes$mag), ][1, ]
+
+# how big was it?
+biggest$mag
+
+# distance from home (m)
+distm(c(mylong, mylat), c(biggest$long, biggest$lat))
+```
+
+#### Write a function to calculate distance from your home
+```{r}
+fromhome <- function(lat, long) {distm(c(mylong, mylat), c(long, lat))}
+```
+
+### Add the distance from home as a column in the original dataframe. Then identify the closest recent earthquake. What was it's magnitude?
+```{r}
+recentquakes$distancesfromhome <- mapply(fromhome,
+                                  recentquakes$latitude,
+                                  recentquakes$longitude)
+# Closest earthquake
+closestquake <- recentquakes[recentquakes$distancesfromhome ==
+                               min(recentquakes$distancesfromhome), ]
+
+# Look at the magnitude
+closestquake$mag
+```
+
+
+#### Improve your map
+- Play around with colors to make your map appealing and readable. 
+- Map all the recent earth quakes.
+- Put the biggest earthquake on the map with a different symbol and color.
+- Put your home on the map, too, in another different color and symbol.
+- Then add the earthquake closest to your home, again in a different color.
+```{r}
+# get a map
+par(mar=c(0,0,0,0))
+map("world", 
+    col = "blue", 
+    bg = "#000050", 
+    fill = FALSE, 
+    interior = TRUE, 
+    lwd = 0.5, 
+    projection = "cylequalarea", 
+    par = 0, 
+    wrap = TRUE)
+
+# get points on the map
+ptsproj <- mapproject(recentquakes$longitude, recentquakes$latitude)
+points(ptsproj, pch=20, cex=.5, col="white")
+
+# Biggest earthquake on the map
+biggest_loc <- mapproject(biggest$long, biggest$lat)
+points(biggest_loc, cex=.8, pch=15, col="yellow")
+
+# get home on the map
+# put on the map with a star
+myloc <- mapproject(mylong, mylat) # home longitude and latitude
+points(myloc, cex=.8, pch=10, col="red")
+
+# get the coordinates for the closest earthquake
+closequake <- mapproject(closestquake$long, closestquake$lat)
+# and plot it in a different color
+points(closequake, cex=.8, pch=20, col="green")
+```
+
+#### How many earthquakes occured within a long days drive of you (500 miles)? How big was the biggest one of these?
+```{r}
+# find all the close earthquakes
+# 500 miles= 800,000 m
+quakes500close <- recentquakes[(recentquakes$distancesfromhome) < 800000, ]
+
+dim(quakes500close) # number of earthquakes close to me
+
+max(quakes500close$mag) # biggest earthquake
+```

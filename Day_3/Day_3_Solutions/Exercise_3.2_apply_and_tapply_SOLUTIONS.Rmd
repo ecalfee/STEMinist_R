@@ -1,0 +1,76 @@
+---
+title: "Exercise 3.2"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+## Apply family
+#### useful commands: `function(){ }`, `apply()`, `tapply()`, `hist()`, `dim()`, `prod()`, `sd()`
+
+#### 00*. Load state data
+```{r}
+?state
+data(state)
+# this data is stored in a slightly different way than other datasets we've used so far
+states = as.data.frame(state.x77) # run this line of code to avoid later confusion
+```
+
+
+#### 01*. What is the average population, income, and area of all 50 states? \newline
+Do this in one short line of code
+
+```{r}
+apply(states, 2, mean)
+colMeans(states) # alternative
+```
+
+#### 02*. What is the average area of the states from different regions of the country? \newline
+Hint: use the object state.region in your environment
+
+```{r}
+tapply(states$Area, state.region, mean)
+```
+
+#### 03*. Plot a histogram for each variable in the states data (Population, Income, Illiteracy etc.)
+```{r, results = 'hide'}
+# 'hide' code chunk option only shows plots, no text output
+dim(states)
+par(mfrow = c(2,2)) # shows 2 rows and 2 columns of plots at once in a frame
+apply(states, 2, hist)
+```
+
+#### 04*. Let's assume that we don't want to live in a state with high illiteracy, high murder, and many freezing days. \newline 
+Also assume that each of these factors contribute equally to our opinion: (Illiteracy x Murder x Frost) = undesirable. \newline
+Which 10 states should we avoid? \newline
+Hint: use prod(); and maybe order()
+```{r}
+livability = apply(states[,c("Illiteracy", "Murder", "Frost")], # subset to variables of interest
+                   1, prod) # apply product (i.e. multiplication) to each row
+livability[order(livability, decreasing = T)][1:10] # top ten least livable states
+```
+
+#### BONUS 05. Standardize all the variables in the states dataset and save your answer to a new dataframe, states_standardized \newline
+Hint: to standardize a variable, you subtract the mean and divide by the standard deviation (sd)
+
+```{r}
+states_standardized = apply(states, 2, function(x) (x-mean(x))/sd(x))
+# original:
+head(states)
+# new:
+head(states_standardized)
+```
+
+
+#### BONUS 06. Create a histogram again for each variable in the states data, but this time label each histogram with the variable names when you plot \newline
+Hint: instead of using apply to iterate over the columns themselves, you can often iterate over the column names with sapply
+```{r, results = 'hide'}
+par(mfrow = c(2,2))
+sapply(colnames(states), function(x) 
+  hist(states[ , x], 
+       main = x, xlab = x,
+       col = "darkblue"))
+```

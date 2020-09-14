@@ -11,8 +11,8 @@ knitr::opts_chunk$set(echo = TRUE)
 ### User generated functions
 #### useful commands: `function(){}`, `is.na()`, `which()`, `length()`, `floor()`, `median()`, `%%` (remainder), `month.name`
 
-To make a function, we use:
-#### `function ( arglist )  {body}`
+#### To make a function, we use:\newline
+my_function = function ( arglist )  {body}
 
 ##### 01*. create a function that turns 0's in a numeric vector into NA's
 ```{r}

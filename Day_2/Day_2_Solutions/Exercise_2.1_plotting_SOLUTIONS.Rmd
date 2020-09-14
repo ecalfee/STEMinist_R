@@ -13,11 +13,17 @@ knitr::opts_chunk$set(echo = TRUE)
 #### useful arguments within plot(): `main`, `xlab`, `ylab`, `col`, `pch`, `cex`
 
 
-##### 00*. load the "crabs" dataset in the MASS package
+##### 00*. read in the "crabs.csv" dataset
 
 ```{r}
-library("MASS")
-data(crabs)
+getwd() 
+# here the working directory is STEMinist_R/Day_2/Day_2_Solutions/, 
+# and crabs.csv is located in STEMinist_R/Day_2/Day_2_Exercises/ . 
+# You can change the working directory using setwd()
+crabs <- read.csv("../Day_2_Exercises/crabs.csv", 
+                  header = T,
+                  stringsAsFactors = F)
+# note: this dataset is published as part of the MASS package
 ```
 
 
@@ -99,12 +105,14 @@ but now depict records of female crabs with red, and male crabs with blue
 
 - Solution 1 --- add a column of colors to the original dataset using indexing
 ```{r}
-blueCrabs$color = NA # add a new column to the data.frame, and assign "dummy" values for now
-blueCrabs$color[blueCrabs$sex == "F"] = "red" # now assign "red" to the new column when rats are femals
-blueCrabs$color[blueCrabs$se == "M"] = "blue" # now assign "blue" when they are males
+# add a new column to the data.frame, and assign "dummy" values for now
+blueCrabs$color = NA 
+# now assign "red" to the new column when crabs are females
+blueCrabs$color[blueCrabs$sex == "F"] = "red" 
+# now assign "blue" when they are males
+blueCrabs$color[blueCrabs$se == "M"] = "blue" 
 # depict females and males with different colors
 plot(blueCrabs$CL ~ blueCrabs$CW, col = blueCrabs$color)
-
 ```
 
 
