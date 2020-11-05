@@ -23,3 +23,7 @@ Participants were all interested in data science and started the course with a r
 Thank you to all of the amazing STEMinist participants for your enthusiasm and hard work! 
 Diana Lizarraga and CalNERDS created a stellar supportive learning environment and recruited students for this workshop.
 Kyle Christie and Marshall McMunn generously shared R exercises from their own graduate student R workshop at UC Davis for re-use in these lessons.
+
+## Creative Commons License for Re-Use
+Attribution-NonCommercial 4.0 International ([CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/))
+You may teach, build and share from this course content for non-commercial purposes as long as you give appropriate credit (e.g. a link to this github repository!).
