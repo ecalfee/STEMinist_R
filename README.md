@@ -24,6 +24,28 @@ Thank you to all of the amazing STEMinist participants for your enthusiasm and h
 Diana Lizarraga and CalNERDS created a stellar supportive learning environment and recruited students for this workshop.
 Kyle Christie and Marshall McMunn generously shared R exercises from their own graduate student R workshop at UC Davis for re-use in these lessons.
 
+## Data used in this course
+Sleep Dataset. Allison, Truett and Cicchetti, Domenic V. (1976), "Sleep  in  Mammals: 
+Ecological and Constitutional  Correlates",  _Science_,  November  12, 
+vol. 194, pp. 732-734. 
+http://lib.stat.cmu.edu/datasets/sleep (sleep.csv)
+
+Crabs Dataset from R MASS package. Campbell, N.A. and Mahon, R.J. (1974) 
+"A multivariate study of variation in two species of rock crab of genus Leptograpsus", 
+_Australian Journal of Zoology_, 22, 417–425. 
+https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/crabs.html (crabs.csv)
+
+Chick Weight Dataset from R. 
+https://www.rdocumentation.org/packages/datasets/versions/3.6.2/topics/ChickWeight (ChickWeight.csv)
+
+States Dataset from R. U.S. Department of Commerce, Bureau of the Census (1977) Statistical Abstract of the United States.
+https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/state.html (datasets::states)
+
+Cereals Dataset from R MASS package. https://stat.ethz.ch/R-manual/R-devel/library/MASS/html/UScereal.html. Original Data http://lib.stat.cmu.edu/datasets/1993.expo/. (MASS::USCereal)
+
+Earthquake Data from USGS.
+https://earthquake.usgs.gov/earthquakes/search/ (Earthquake Challenge)
+
 ## Creative Commons License for Re-Use
-Attribution-NonCommercial 4.0 International ([CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/))
+Attribution-NonCommercial 4.0 International ([CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)).
 You may teach, build and share from this course content for non-commercial purposes as long as you give appropriate credit (e.g. a link to this github repository!).
