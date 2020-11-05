@@ -1,4 +1,4 @@
-# STEMinist_R
+# STEMinist R Workshop
 
 Lessons and exercises for [STEMinist](http://calnerds.berkeley.edu/programs/steminist) R Workshop.
 This ~10 hour introduction to R course was developed for UC Berkeley STEMinist, a free data science mentorship and mini-bootcamp program for women and students of color. The STEMinist R Workshop was brought to UC Davis in 2018 and these lessons have been further adapted for students participating in EEGAP UC Davis.
