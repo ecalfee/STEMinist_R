@@ -1,15 +1,15 @@
 # STEMinist R Workshop
 
-Lessons and exercises for [STEMinist](http://calnerds.berkeley.edu/programs/steminist) R Workshop.
-This ~10 hour introduction to R course was developed for UC Berkeley STEMinist, a free data science mentorship and mini-bootcamp program for women and students of color. The STEMinist R Workshop was brought to UC Davis in 2018 and these lessons have been further adapted for students participating in EEGAP UC Davis.
+Lessons and exercises for STEMinist R Workshop.
+This ~10 hour introduction to R course was developed for UC Berkeley [STEMinist] (http://calnerds.berkeley.edu/programs/steminist), a free data science mentorship and mini-bootcamp program for women and students of color. The STEMinist R Workshop has been taught 8+ times at UC Berkeley since 2017 and was brought to the UC Davis campus in 2018. These R lessons have also been taught annually since 2018 as part of the [Evolution and Ecology Graduate Admission Pathways (EEGAP)](https://eegap.ucdavis.edu/) program, a summer research experience at UC Davis for Howard University undergraduate students.
 
 ## Instructors
-Erin Calfee*, Serena Caplins, Melissa Kardish*, Kristin Lee*, Michelle Stitzer
+Erin Calfee*, Serena Caplins, Melissa Kardish*, Kristin Lee*, Kelsey Lyberger, Michelle Stitzer
 
 *Course developers
 
 ## Using these course materials
-This course is designed as a 3-day introduction to R and most of the content focuses on manipulating data and plotting, with more advanced topis (apply, for loops) covered on the 3rd day. All lessons are taught in base R, but exercises could be completed using other common packages (e.g. tidyverse).
+This course is designed as a 3-day introduction to R and most of the content focuses on manipulating data and plotting, with more advanced topics (apply, for loops) covered on the 3rd day. All lessons are taught in base R, but exercises could be completed using other common packages (e.g. tidyverse).
 Files
   - Lessons (blank lessons as we'd distribute to students and example annotated copies)
   - Short Exercises (completed by student in-between short lessons)
@@ -21,7 +21,7 @@ Participants were all interested in data science and started the course with a r
 
 ## Acknowledgements
 Thank you to all of the amazing STEMinist participants for your enthusiasm and hard work! 
-Diana Lizarraga and CalNERDS created a stellar supportive learning environment and recruited students for this workshop.
+[Diana Lizarraga](https://calnerds.berkeley.edu/nerds/profile/diana-lizarraga) and CalNERDS created a stellar supportive learning environment and recruited students for this workshop.
 Kyle Christie and Marshall McMunn generously shared R exercises from their own graduate student R workshop at UC Davis for re-use in these lessons.
 
 ## Data used in this course
