@@ -1,7 +1,7 @@
 # STEMinist R Workshop
 
 Lessons and exercises for STEMinist R Workshop.
-This ~10 hour introduction to R course was developed for UC Berkeley [STEMinist] (http://calnerds.berkeley.edu/programs/steminist), a free data science mentorship and mini-bootcamp program for women and students of color. The STEMinist R Workshop has been taught 8+ times at UC Berkeley since 2017 and was brought to the UC Davis campus in 2018. These R lessons have also been taught annually since 2018 as part of the [Evolution and Ecology Graduate Admission Pathways (EEGAP)](https://eegap.ucdavis.edu/) program, a summer research experience at UC Davis for Howard University undergraduate students.
+This ~10 hour introduction to R course was developed for UC Berkeley [STEMinist](http://calnerds.berkeley.edu/programs/steminist), a free data science mentorship and mini-bootcamp program for women and students of color. The STEMinist R Workshop has been taught 8+ times at UC Berkeley since 2017 and was brought to the UC Davis campus in 2018. These R lessons have also been taught annually since 2018 as part of the [Evolution and Ecology Graduate Admission Pathways (EEGAP)](https://eegap.ucdavis.edu/) program, a summer research experience at UC Davis for Howard University undergraduate students.
 
 ## Instructors
 Erin Calfee*, Serena Caplins, Melissa Kardish*, Kristin Lee*, Kelsey Lyberger, Michelle Stitzer
